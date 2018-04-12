@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+<!-- Keyboard keys to play sound -->
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -47,6 +47,7 @@
     </div>
   </div>
 
+  <!-- Sound link for each key, audio stored in sounds folder-->
   <audio data-key="65" src="sounds/clap.wav"></audio>
   <audio data-key="83" src="sounds/hihat.wav"></audio>
   <audio data-key="68" src="sounds/kick.wav"></audio>
@@ -57,7 +58,40 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
+<!-- Javascript section -->
 <script>
+
+function playSound(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  if (!audio) return // skip this function if there's no audio file
+
+// if audio file exist, 
+//    rewind audio to beginning each time, allowing for multi-key hits
+//    play audio file
+    audio.currentTime=0;
+    audio.play()
+
+// add 'playing' to selected key's class attribute
+  key.classList.add('playing');
+}
+
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return  // skip this function if it CSS transition is not transform
+  
+// when CSS transform animation ends, remove class 'playing' to fade out
+  this.classList.remove('playing')
+}
+
+// listen for a keyDown event by attaching an EventListener
+window.addEventListener('keydown', playSound);
+
+// for each key, attach an event listener for when CSS transition is completed
+// once transitionend, call removeTransition
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => {
+  key.addEventListener('transitionend', removeTransition)
+});
 
 </script>
 
