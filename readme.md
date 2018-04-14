@@ -62,3 +62,45 @@ The `transitionend` event is fired when a CSS transition has completed. In the c
  
 The animationend event is fired when a CSS animation has completed. 
 In the case where an animation is removed before completion, such as if the `animation-duration` is removed or `display` is set to "none", then the event will not be generated.
+
+## Project 2: CSS + JS Clock
+
+### [CSS `transform` property](https://www.w3schools.com/cssref/css3_pr_transform.asp)
+CSS Syntax: `transform: none|transform-functions|initial|inherit;`
+
+The `transform` property applies a 2D or 3D transformation to an element. This property allows you to rotate, scale, move, skew, etc., elements
+
+* `rotate(angle)` - Defines a 2D rotation, the angle is specified in the parameter
+
+### [CSS `transform-origin` property](https://www.w3schools.com/cssref/css3_pr_transform-origin.asp)
+
+CSS syntax: `transform-origin: x-axis y-axis z-axis|initial|inherit;`
+
+The `transform-origin` property allows you to change the position of transformed elements.
+
+2D transformations can change the x- and y-axis of an element. 3D transformations can also change the z-axis of an element.  
+
+The default value is: `transform-origin: 50% 550% 0`
+
+* Wes noted that the default value for `transform-origin` is 50% on the x-axis. To adjust the rotation pivot point on the most right of the clock hands, we can define:
+`transform-origin: 100%` or `transform-origin: right` 
+
+### [CSS transitions](https://www.w3schools.com/css/css3_transitions.asp)
+
+CSS syntax: `transition: property duration timing-function delay|initial|inherit;`
+
+CSS transitions allows you to change property values smoothly (from one value to another), over a given duration.
+
+To create a transition effect, you must specify two things:
+* `transition-property` - CSS property you want to add an effect to
+* `transition-duration` - Specifies how many seconds or milliseconds the transition effect takes to complete
+
+### [`transition-timing-function`](https://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp)
+
+The `transition-timing-function` property specifies the speed curve of the transition effect.
+
+This property allows a transition effect to change speed over its duration.
+
+* In console, we can also click on the *Open Cubic Bezier Editor* icon next to the transition function to quickly edit the transition effect, then simply copy and paste the values into our CSS.
+
+e.g. `transition-timing-function: cubic-bezier(0.1, 2.74, 1, 0.48)` 
