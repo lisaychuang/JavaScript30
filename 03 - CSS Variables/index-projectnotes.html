@@ -18,10 +18,32 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <img src="https://cdn-images-1.medium.com/max/500/1*sqX8gTYDOWGXG6uIBB5Dpg.jpeg">
 
   <style>
+    /* 
+    CSS Variables, declared on root 
+    */
 
+    :root {
+        --base: #ffc600;
+        --spacing: 20px;
+        --blur: 10px;
+    }
+
+    /* 
+    Style using CSS variables
+    */
+
+    img {
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+    }
+
+    .hl {
+        color: var(--base);
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -45,6 +67,33 @@
   </style>
 
   <script>
+        // select all input elements
+        const inputs = document.querySelectorAll('.controls input');
+
+        function handleUpdate(){
+            const suffix = this.dataset.sizing || '';
+            
+            // select variable and set CSS property
+            document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${suffix}`)
+        }
+        
+        // Wes' solution to add event listeners for each input, for both change and mousemove
+
+        // inputs.forEach(input => 
+        //     input.addEventListener('change', handleUpdate)
+        // );
+
+        // inputs.forEach(input => 
+        //     input.addEventListener('mousemove', handleUpdate)
+        // );
+
+        // KEEPING CODE DRY -- the above code can also be refactored to:
+
+        ['change', 'mousemove'].forEach(event => 
+            inputs.forEach(input => 
+                input.addEventListener(event, handleUpdate))
+        );
+
   </script>
 
 </body>

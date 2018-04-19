@@ -104,3 +104,35 @@ This property allows a transition effect to change speed over its duration.
 * In console, we can also click on the *Open Cubic Bezier Editor* icon next to the transition function to quickly edit the transition effect, then simply copy and paste the values into our CSS.
 
 e.g. `transition-timing-function: cubic-bezier(0.1, 2.74, 1, 0.48)` 
+
+## Project 3: CSS Variables and JS
+
+### [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables)
+
+CSS variables are entities defined by CSS authors that contain specific values to be reused throughout a document.
+
+CSS variables allow a value to be stored in one place, then referenced in multiple other places. An additional benefit is semantic identifiers. 
+For example `--main-text-color` is easier to understand than `#00ff00`, especially if this same color is also used in another context.
+
+They are set using custom property notation (e.g. `--main-color: black;`) and are accessed using the `var()` function (e.g., `color: var(--main-color);`)
+
+**CSS variables can be updated with Javascript.** Whereas with [SASS variables](https://sass-lang.com/guide), variables are defined at compile time and cannot be changed after.
+
+### [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+
+`NodeList` objects are collections of nodes such as those returned by `document.querySelectorAll()` method. `NodeList` can be:
+
+- Live collection: changes in the DOM are reflected in the collection (e.g. `Node.childNodes`)
+- Static collection: any subsequent change in the DOM does not affect the content of the collection. (e.g. `document.querySelectorAll()`)
+
+An `Array` has a lot more methods than a `NodeList`, such as `map(), reduce()`. We can convert a NodeList into an array:
+
+`let x = querySelectorAll(selector)`
+`Array.prototype.slice.call(x);`
+
+### [HTMLElement.dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)
+
+The `HTMLElement.dataset` property allows access, both in reading and writing mode, to all the custom data attributes (`data-*`) set on the element, either in HTML or in the DOM.
+
+- `dataset` property itself can be read, but not directly written
+- all writes must be to `dataset.property`, which in turn represent the data attributes.
