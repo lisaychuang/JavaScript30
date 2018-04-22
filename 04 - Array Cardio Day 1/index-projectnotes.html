@@ -31,28 +31,55 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const results = inventors.filter(inventor =>  (inventor.year < 1600) && (inventor.year >=1500) )
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+    const inventorNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const sorted = inventors.sort((firstP, secondP) => firstP.year > secondP.year ? 1 : -1)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
+    const years = inventors.reduce((totalYrs, inventor) => {
+        return totalYrs + (inventor.passed - inventor.year)
+    }, 0);
 
-    // 5. Sort the inventors by years lived
+    // 5. Sort the inventors by years lived in descending order
+    const sortedYrs = inventors.sort((firstP, secondP) => (firstP.passed - firstP.year) < (secondP.passed - secondP.year) ? 1 : -1)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    const category = document.querySelector('.mw-category');
+    const linksToArray = Array.from(category.querySelectorAll('a'));
+    const arrayToText = linksToArray.map(link => link.textContent);
+
+    const filteredList = arrayToText.filter(text => text.indexOf('de') >= 0)
+
+    // We can also check for text inclusion use .includes()
+    // const filteredList = arrayToText.filter(text => text.includes('de'))
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
+    const splitNames = people.map(person => person.split(','))
+    const sorted = splitNames.sort((firstP, secondP) =>  firstP[0] > secondP[0] ? 1 : -1)
+    const sortedNames = sorted.map(name => name.join(','))
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const transportationTally = data.reduce(function (tally, option) {
+        if (!tally[option]) {
+            tally[option] = 0;
+        }
+        tally[option]++;
+        return tally;
+    }, {});
 
   </script>
 </body>

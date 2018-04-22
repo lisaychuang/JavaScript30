@@ -130,9 +130,83 @@ An `Array` has a lot more methods than a `NodeList`, such as `map(), reduce()`. 
 `let x = querySelectorAll(selector)`
 `Array.prototype.slice.call(x);`
 
+Or use `Array.from():
+
+`let x = querySelectorAll(selector)`
+`Array.from(x);`
+
 ### [HTMLElement.dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)
 
 The `HTMLElement.dataset` property allows access, both in reading and writing mode, to all the custom data attributes (`data-*`) set on the element, either in HTML or in the DOM.
 
 - `dataset` property itself can be read, but not directly written
 - all writes must be to `dataset.property`, which in turn represent the data attributes.
+
+## Project 4: Array cardio 1
+
+### [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+The `filter()` method calls a provided `callback` function once for each element in an array, and constructs a new array of all the values for which callback returns a value that returns `true` or `truthy`
+
+### [Console.table](https://developer.mozilla.org/en-US/docs/Web/API/Console/table)
+
+This function takes one mandatory argument `data`, which must be an array or an object, and one additional optional parameter `columns`.
+
+It logs `data` as a table. Each element in the array (or enumerable property if `data` is an object) will be a row in the table.
+
+### [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+Syntax: `arr.sort([compareFunction])`
+
+The `sort()` method sorts the elements of an array in place and returns the array, using a `compareFunction` to determine the sort order. Array elements are sorted according to the return value of the `compareFunction`:
+- If `compareFunction(a, b)` < 0, sort `a` to an index lower than `b`, i.e. `a` comes first
+- If `compareFunction(a, b)` = 0, leave `a` and `b` unchanged with respect to each other, but sorted with respect to all different elements
+- If `compareFunction(a, b)` > 0, sort `b` to an index lower than `a`, i.e. `b` comes first.
+
+Example:
+```
+function compare(a, b) {
+  if (a is less than b by some ordering criterion) {
+    return -1;
+  }
+  if (a is greater than b by the ordering criterion) {
+    return 1;
+  }
+  // a must be equal to b
+  return 0;
+}
+```
+
+### [Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
+
+Syntax: `arr.reduce(callback[, initialValue])`
+
+The `reduce()` method applies a function against an `accumulator` (like a running total) and each element in the array (from left to right) to reduce it to a single value.
+
+Example:
+
+```
+var sum = [0, 1, 2, 3].reduce(function (accumulator, currentValue) {
+  return accumulator + currentValue;
+}, 0);
+// sum is 6
+```
+
+### [Node.textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
+
+The `Node.textContent` property represents the text content of a node and its descendants.
+
+Internet Explorer introduced `node.innerText`. The intention is similar but with the following differences:
+
+- While `textContent` gets the content of all elements, including `<script>` and `<style>` elements, `innerText` does not.
+- `innerText` is aware of style and will not return the text of hidden elements, whereas `textContent` will.
+
+Quite often, in order to retrieve or write text within an element, people use `innerHTML`. `Element.innerHTML` returns the HTML as its name indicates.  However, `textContent` often has better performance because the text is not parsed as HTML, and can prevent XSS attacks.
+
+### [String.prototype.includes()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+
+The `includes()` method determines whether one string may be found within another string, returning `true` or `false` as appropriate.
+
+### [String.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
+
+The `indexOf()` method returns the index within the calling `String` object of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found.
