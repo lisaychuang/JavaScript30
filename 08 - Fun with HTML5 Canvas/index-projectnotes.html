@@ -5,8 +5,76 @@
   <title>HTML5 Canvas</title>
 </head>
 <body>
+<!-- HTML <canvas> element, default size 800 x 800px -->
 <canvas id="draw" width="800" height="800"></canvas>
+
 <script>
+// get Canvas element, set to viewport size
+const canvas = document.querySelector('#draw');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// get 2D Canvas context, define line styling & composition type
+const ctx = canvas.getContext('2d'); //CanvasRenderingContext2D object
+ctx.strokeStyle = '#BADA55';
+ctx.lineJoin = 'round';
+ctx.lineCap = 'round';
+ctx.lineWidth = 100;
+ctx.globalCompositeOperation = 'overlay';
+
+// dummy variables accessible in global state
+let isDrawing = false; // flag to decide if we are drawing
+let lastX = 0; //last X coordinate to start/end line
+let lastY = 0; //last Y coordinate to start/end line
+let hue =0;
+let strokeWithDirection = true;
+
+function changeHue(){
+    // set initial line color
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
+    // adjust hue to achieve rainbow line effect
+    // Keep increasing hue, reset hue to 0 when it exceeds the maximum hsl hue value (360)
+     (hue >= 360) ? (hue=0) : hue++;
+}
+
+function changeLineWidth(){
+    // set line width range (-1 to 100)
+    if (ctx.lineWidth >=100 || ctx.lineWidth <=1) {
+        strokeWithDirection = !strokeWithDirection; 
+    }
+
+    // Increase or decrease line width depending on current value
+    strokeWithDirection ? ctx.lineWidth++ : ctx.lineWidth--;
+}
+
+function draw(e) {
+    if(!isDrawing) return //stop fn from running when user does not have mouseDown
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);  //line start from 
+    ctx.lineTo(e.offsetX, e.offsetY);  //line goes to
+    ctx.stroke();
+
+    // Set lastX & lastY with destructuring assignment
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    changeHue();
+    changeLineWidth();
+};
+
+// Add event listeners to canvas, toggling isDrawing based on MouseEvent
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseout', () => isDrawing = false); // mouse moved offscreen
+
+// on mousedown, set isDrawing to true and assign X & Y coordinate
+canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    // update X & Y coordinates based on where mousedown occurs
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+
 </script>
 
 <style>

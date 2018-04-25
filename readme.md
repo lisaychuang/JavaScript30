@@ -10,7 +10,7 @@ The idea is to build 30 projects with vanilla Javascript! No compiler, framework
 
 # Concepts Learned
 
-I will be keeping track of the various JS concepts learned in my branch *study-notes*. The original Javascript30 starter file are kept on the *master* branch!
+I will be keeping track of the various JS & CSS concepts learned in my branch `study-notes`. The original Javascript30 starter file are kept on the `master` branch!
 
 ## Project 1: JavaScript Drum Kit
 
@@ -26,10 +26,10 @@ The `*` may be replaced by any name following the production rule of xml names w
 
 ### [Document vs Window objects](http://eligeske.com/jquery/what-is-the-difference-between-document-and-window-objects-2/)
 
-* Window is the first thing that gets loaded into the browser
-* Document object is your html, aspx, php, or other document that will be loaded into the browser
+* `Window` is the first thing that gets loaded into the browser
+* `Document` object is your html, aspx, php, or other document that will be loaded into the browser
 
-To access a property for the window it is window.property, if it is document it is window.document.property which is also available in short as document.property.
+To access a property for the window it is window.property, if it is `document` it is `window.document.property` which is also available in short as `document.property`.
 
 * An iframe actually is considered as a new window with its own document loaded into it
 To access a frame is window.frames[], which is an array of all the frames. If you only have one iframe you access it by using window.frames[0].
@@ -132,13 +132,17 @@ They are set using custom property notation (e.g. `--main-color: black;`) and ar
 
 An `Array` has a lot more methods than a `NodeList`, such as `map(), reduce()`. We can convert a NodeList into an array:
 
-`let x = querySelectorAll(selector)`
-`Array.prototype.slice.call(x);`
+```js
+let x = querySelectorAll(selector)
+Array.prototype.slice.call(x);
+```
 
-Or use `Array.from():
+Or use `Array.from()`:
 
-`let x = querySelectorAll(selector)`
-`Array.from(x);`
+```js
+let x = querySelectorAll(selector)
+Array.from(x);
+```
 
 ### [HTMLElement.dataset](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset)
 
@@ -169,7 +173,7 @@ The `sort()` method sorts the elements of an array in place and returns the arra
 - If `compareFunction(a, b)` > 0, sort `b` to an index lower than `a`, i.e. `b` comes first.
 
 Example:
-```
+```js
 function compare(a, b) {
   if (a is less than b by some ordering criterion) {
     return -1;
@@ -190,7 +194,7 @@ The `reduce()` method applies a function against an `accumulator` (like a runnin
 
 Example:
 
-```
+```js
 var sum = [0, 1, 2, 3].reduce(function (accumulator, currentValue) {
   return accumulator + currentValue;
 }, 0);
@@ -259,13 +263,15 @@ A `Promise` is in one of these states:
 Instead of passing callbacks into a function, we can attach callback functions to a `Promise` object - an asynchronous function call. 
 
 Example:
-```
+```js
 const promise = doSomething(); 
 promise.then(successCallback, failureCallback);
 ```
 
 Or:
-`doSomething().then(successCallback, failureCallback);`
+```js
+doSomething().then(successCallback, failureCallback);
+```
 
 * Callbacks attached to a `Promise` will never be called before the completion of the current run of the JavaScript event loop.
 * Multiple callbacks may be added by calling `.then` several times, to be executed independently in insertion order.
@@ -354,7 +360,7 @@ Syntax: `array.splice(start[, deleteCount[, item1[, item2[, ...]]]])`
 
 Example:
 
-```
+```js
 # Remove 0 element, insert 'drum'
 var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
 var removed = myFish.splice(2, 0, 'drum');
@@ -363,7 +369,7 @@ var removed = myFish.splice(2, 0, 'drum');
 // removed is [], no elements removed
 ```
 
-```
+```js
 # Remove 1 element from index 3
 var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
 var removed = myFish.splice(3, 1);
@@ -377,10 +383,89 @@ var removed = myFish.splice(3, 1);
 Syntax: `arr.slice([begin[, end]])`
 
 Example: 
-```
+```js
 var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
 var citrus = fruits.slice(1, 3);
 
 // fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
 // citrus contains ['Orange','Lemon']
 ```
+
+## Project 8: HTML5 Canvas
+
+### [window.innerWidth()](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth) & [ window.innerHeight()](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight)
+
+* `window.innerWidth()`: Width (in pixels) of the browser window viewport including, if rendered, the vertical scrollbar.
+
+* `window.innerHeight()`: Height (in pixels) of the browser window viewport including, if rendered, the horizontal scrollbar.
+
+### [<canvas>](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
+
+The HTML `<canvas>` element provides an empty graphic zone on which specific JavaScript APIs can draw (such as Canvas 2D or WebGL). This can, for instance, be used to draw graphs, make photo composition or animations. 
+
+`<canvas>` element has only two attributes, `width` and `height`. These are both optional and can also be set using DOM properties. When no width and height attributes are specified, the canvas will initially be 300 pixels wide and 150 pixels high.
+
+Learn more with [MDN's Canvas tutorial](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
+
+#### [canvas.getContext()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext)
+
+Syntax: `var ctx = canvas.getContext(contextType, contextAttributes);`
+
+The `HTMLCanvasElement.getContext()` method is used to obtain the rendering context and its drawing functions. 
+
+`getContext()` takes one parameter, the type of context:
+
+* `"2d"` leading to the creation of a `CanvasRenderingContext2D` object representing a two-dimensional rendering context.
+* `"webgl"` (or `"experimental-webgl"`) which will create a `WebGLRenderingContext` object representing a three-dimensional rendering context. 
+
+#### [CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D)
+
+The `CanvasRenderingContext2D` interface is used for drawing rectangles, text, images and other objects onto the canvas element. It provides the 2D rendering context for the drawing surface of a <canvas> element.
+
+`CanvasRenderingContext2D` has many methods for drawing rectangles, text, paths etc, and to customize styles for these drawings.  In this project, we used:
+
+* `strokeStyle()`: Color or style to use for the lines around shapes. 
+* `lineJoin()`: Defines the type of corners where two lines meet. Possible values: `miter` (default), `round`, `bevel`.
+* `lineCap()`: Type of endings on the end of lines. Possible values: `butt` (default), `round`, `square`.
+* `lineWidth()`: Width of lines
+* `beginPath()`: Starts a new path by emptying the list of sub-paths. Call this method when you want to create a new path (e.g. a new line)
+* `moveTo()`: Moves the starting point of a new sub-path to the `(x, y)` coordinates.
+* `lineTo()`: Connects the last point in the subpath to the `(x, y)` coordinates with a straight line.
+* `stroke()`: Strokes the subpaths with the current stroke style
+* `globalCompositeOperation()`: a property of `CanvasRenderingContext2D` that sets the type of compositing operation to apply when drawing new shapes, where type is a string identifying which of the compositing or blending mode operations to use.
+
+See [MDN docs with diagram explanation of each composition type](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation)
+
+### [MouseEvent.offsetX](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetX) & [MouseEvent.offsetY](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/offsetY)
+
+* `offsetX` read-only property of the `MouseEvent` interface provides the offset in the X coordinate of the mouse pointer between that event and the padding edge of the target node. 
+* `offsetY` read-only property of the `MouseEvent` interface provides the offset in the Y coordinate of the mouse pointer between that event and the padding edge of the target node. 
+
+### [Destructuring Assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+
+The `destructuring assignment` syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+
+The left-hand side of the assignment define what values to unpack from the sourced variable.
+
+Example:
+
+```js
+var a, b, rest;
+[a, b] = [10, 20];
+console.log(a); // 10
+console.log(b); // 20
+
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // [30, 40, 50]
+```
+
+### [HSL cylindrical-coordinate system: `hsl()`](https://www.w3schools.com/cssref/func_hsl.asp)
+
+`hsl()` function define colors using the **Hue-saturation-lightness model (HSL)**.
+
+`HSL` stands for hue, saturation, and lightness - and represents a cylindrical-coordinate representation of colors.
+
+Handy [HSL value reference](http://mothereffinghsl.com/)
+
