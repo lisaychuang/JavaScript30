@@ -44,6 +44,11 @@ Using `classList` is a convenient way to access an element's list of classes (cl
 * `add(str)` - add specified class values. If these classes already exist in attribute of the element, then they are ignored.
 * `remove(str)` - remove specified class values. Removing a class that does not exist, does NOT throw an error.
 * `item(num)` - Return class value by index number
+* `toggle( String [, force] )`
+When only one argument is present: Toggle class value; 
+(if class exists then remove it and return false, if not, add class and return true)
+
+When a second argument is present: If the second argument evaluates to true, add specified class value, and if it evaluates to false, remove it.
 * `contatins(str)` - checks if specified class value exists
 * `replace(oldClass, newClass)` - Replaces an existing class with a new class.
 
@@ -51,7 +56,7 @@ Using `classList` is a convenient way to access an element's list of classes (cl
 
 Sets a timer which executes a function or specified piece of code once after the timer expires.
 
-* Wes noted that if you are using the [`transition` property](https://www.w3schools.com/cssref/css3_pr_transition.asp) in CSS, using `setTimeout` in your JS may result in transitions becoming out of sync. For this reason, Wes attaches a listenr on the `transitionend` event
+* Wes noted that if you are using the [`transition` property](https://www.w3schools.com/cssref/css3_pr_transition.asp) in CSS, using `setTimeout` in your JS may result in transitions becoming out of sync. For this reason, Wes attaches a listener on the `transitionend` event
 
 * A timeout may also take longer to fire than anticipatd, caused by browser throttling and code execution sequence on single thread apps. [Read more about these potential delays here.](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
 
@@ -210,3 +215,19 @@ The `includes()` method determines whether one string may be found within anothe
 ### [String.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
 
 The `indexOf()` method returns the index within the calling `String` object of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found.
+
+## Project 5: Flex Panels Image Gallery
+
+### [CSS Flexbox](https://developer.mozilla.org/en-US/docs/Glossary/Flexbox)
+
+Flexible Box Layout Module, makes it easier to design flexible responsive layout structure without using float or positioning. The key feature of flexbox is the fact that items in a flex layout can grow and shrink. Space can be assigned to the items themselves, or distributed between or around the items.
+
+Learn more about Flexbox with Wes through his [Flexbox course](https://flexbox.io/) - a 20 video course series!
+
+#### `display`
+A flexbox layout is defined using `display:flex` or `display:inline-flex` on the parent item (e.g. `div`). This element then becomes a `flex container`, and each one of its children becomes a `flex item`. 
+
+An element can be both a `flex container` and a `flex item`!
+
+#### `flex`
+The `flex` CSS property specifies how a flex item will grow or shrink so as to fit the space available in its flex container. This is a shorthand property that sets `flex-grow`, `flex-shrink`, and `flex-basis`.
