@@ -310,3 +310,77 @@ The `match()` method retrieves the matches when matching a string against a regu
 
 The `replace()` method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a `RegExp`, and the replacement can be a string or a function to be called for each match.
 
+## Project 7: Array Cardio Day 2
+
+### [Date.prototype.getFullYear()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear)
+
+The `getFullYear()` method returns the year of the specified date according to local time. Use this method instead of the `getYear()` method - as it has been deprecated!
+
+### [Array.prototype.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+
+Syntax: `arr.some(callback[, thisArg])`
+
+The `some()` method tests whether at least one element in the array passes the test implemented by the provided callback function.
+
+`some()` executes the callback function once for each element present in the array until it finds one where callback returns a `truthy` value. 
+
+If such an element is found, `some()` immediately returns `true`. Otherwise, `some()` returns `false`.
+
+### [Array.prototype.every()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
+
+Syntax: `arr.every(callback[, thisArg])`
+
+The `every()` method tests whether all elements in the array pass the test implemented by the provided callback function.
+
+The `every()` method executes the provided callback function once for each element present in the array until it finds one where callback returns a `falsy` value. If such an element is found, the `every()` immediately returns `false`. Otherwise, `every()` returns `true`.
+
+### [Array.prototype.find()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
+
+Syntax: `arr.find(callback[, thisArg])`
+
+The `find()` method returns the value of the first element in the array that satisfies the provided callback function. Otherwise `undefined` is returned.
+
+### [Array.prototype.findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+
+Syntax: `arr.findIndex(callback[, thisArg])`
+
+The `findIndex()` method returns the index of the first element in the array that satisfies the provided callback function.  If the callback never returns a `truthy` value or the array's length is 0, `findIndex()` returns -1. 
+
+### [Array.prototype.splice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) vs [Array.prototype.slice()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+
+`splice() `method changes the contents of an array by removing existing elements and/or adding new elements.  It will return an array containing the **deleted elements.**
+
+Syntax: `array.splice(start[, deleteCount[, item1[, item2[, ...]]]])`
+
+Example:
+
+```
+# Remove 0 element, insert 'drum'
+var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+var removed = myFish.splice(2, 0, 'drum');
+
+// myFish is ["angel", "clown", "drum", "mandarin", "sturgeon"] 
+// removed is [], no elements removed
+```
+
+```
+# Remove 1 element from index 3
+var myFish = ['angel', 'clown', 'drum', 'mandarin', 'sturgeon'];
+var removed = myFish.splice(3, 1);
+
+// removed is ["mandarin"]
+// myFish is ["angel", "clown", "drum", "sturgeon"]
+```
+
+`slice()` method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). The original array will **not be modified.**
+
+Syntax: `arr.slice([begin[, end]])`
+
+Example: 
+```
+var fruits = ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'];
+var citrus = fruits.slice(1, 3);
+
+// fruits contains ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango']
+// citrus contains ['Orange','Lemon']
+```
