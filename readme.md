@@ -231,3 +231,82 @@ An element can be both a `flex container` and a `flex item`!
 
 #### `flex`
 The `flex` CSS property specifies how a flex item will grow or shrink so as to fit the space available in its flex container. This is a shorthand property that sets `flex-grow`, `flex-shrink`, and `flex-basis`.
+
+## Project 6: Ajax Type Ahead Search Form
+
+### [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+
+The Fetch API provides an interface for fetching resources (including across the network). It will seem familiar to anyone who has used `XMLHttpRequest`, but the new API provides a more powerful and flexible feature set.
+
+`Fetch` provides a generic definition of `Request` and `Response` objects.
+
+The `fetch()` method takes one mandatory argument, the path to the resource you want to fetch. It returns a `Promise` that resolves to the `Response` to that request, whether it is successful or not. You can also optionally pass in an `init` options object as the second argument.
+
+Once a `Response` is retrieved, there are a number of methods available to define what the body content is and how it should be handled.
+
+### [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+A `Promise` is a proxy for a value not necessarily known when the promise is created. It is an object which represents the eventual completion (or failure) of an asynchronous operation and resulting value.
+
+A promise allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a `Promise` to supply the value at some point in the future.
+
+A `Promise` is in one of these states:
+
+* `pending`: initial state, neither fulfilled nor rejected.
+* `fulfilled`: meaning that the operation completed successfully.
+* `rejected`: meaning that the operation failed.
+
+Instead of passing callbacks into a function, we can attach callback functions to a `Promise` object - an asynchronous function call. 
+
+Example:
+```
+const promise = doSomething(); 
+promise.then(successCallback, failureCallback);
+```
+
+Or:
+`doSomething().then(successCallback, failureCallback);`
+
+* Callbacks attached to a `Promise` will never be called before the completion of the current run of the JavaScript event loop.
+* Multiple callbacks may be added by calling `.then` several times, to be executed independently in insertion order.
+
+Read more about [using promises here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+
+### [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)
+
+The `Response` interface of the `Fetch API` represents the response to a request, which has many properties and methods. For example:
+
+#### Properties
+* `Response.ok`: Contains a boolean stating whether the response was successful (status in the range 200-299) or not
+* `Response.statusText`: Contains the status message corresponding to the status code (e.g., OK for 200).
+* `Response.body`: the body of the response/request, allowing you to declare what its content type is and how it should be handled.
+
+#### Methods
+* `Response.clone()`: Creates a clone of a Response object.
+* `Body.json()`: Takes a `Response` stream and reads it to completion. It returns a promise that resolves with the result of parsing the body text as JSON.
+* `Body.formData()`: Takes a `Response` stream and reads it to completion. It returns a promise that resolves with a FormData object.
+
+### [Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob)
+
+In Wes's video, he named the returned value of `fetch(endpoint)` as a `blob`. Per MDN definition:
+
+A `Blob` object represents a file-like object of immutable, raw data. Blobs represent data that isn't necessarily in a JavaScript-native format. 
+
+### [ES6 Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+
+`Spread syntax (...)` allows an iterable such as an array or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
+
+### [RegExp()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)
+
+The `RegExp` constructor creates a regular expression object for matching text with a pattern.
+
+Learn more about using [Regular Expressions here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+
+### [String.prototype.match()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match)
+
+The `match()` method retrieves the matches when matching a string against a regular expression.
+
+### [String.prototype.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+
+The `replace()` method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a `RegExp`, and the replacement can be a string or a function to be called for each match.
+
