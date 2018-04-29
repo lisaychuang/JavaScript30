@@ -99,6 +99,40 @@
   </div>
 
 <script>
+    // get all checkboxes
+    const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+    // initiate a variable for the last selected/checked checkbox
+    let lastCheckedCheckbox;
+
+    function handleCheck(e) {
+        console.log(e.movementY);
+        // by default, the inBetween flag is set to false
+        let inBetween = false;  
+
+        // if SHIFT key is pressed down && the checkbox was checked
+        if (e.shiftKey && this.checked) {
+            // loop through checkboxes, look for the 1st and last checked i.e. the range
+            // set flag variable, inBetween, as true
+
+            checkboxes.forEach(checkbox => {
+                console.log(checkbox);
+
+                if (checkbox === this || checkbox === lastCheckedCheckbox) {
+                    inBetween = !inBetween;
+                    console.log ('Starting to check the inbetween checkboxes')
+                };
+                
+                // 'check' the checkbox if it is within range
+                if (inBetween) { checkbox.checked = true; };
+            })
+        }
+
+        lastCheckedCheckbox = this; // set last checked checkbox
+    }
+
+    // add CLICK event listener to each checkbox element
+    checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+
 </script>
 </body>
 </html>
