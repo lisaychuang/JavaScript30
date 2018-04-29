@@ -469,3 +469,136 @@ console.log(rest); // [30, 40, 50]
 
 Handy [HSL value reference](http://mothereffinghsl.com/)
 
+## Project 9: DevTools Tricks
+
+### [Console API reference](https://developers.google.com/web/tools/chrome-devtools/console/console-reference)
+
+Console API allow developers to write information to the Dev Tools console in browsers, create JavaScript profiles, and start a debugging session.
+
+### [Pause Your Code With Breakpoints](https://developers.google.com/web/tools/chrome-devtools/javascript/breakpoints)
+
+In DevTools, there are several types of breakpoints available, which can be used to pause JS code for debugging:
+
+* `Line-of-code`: Pause on an exact region of code.
+* `Conditional line-of-code`: Pause on an exact region of code, but only when some other condition is true.
+* `DOM`: Pause on the code that changes or removes a specific DOM node, or its children.
+* `XHR`: Pause when an XHR URL contains a string pattern.
+* `Event listener`: Pause on the code that runs after an event, such as when `click`, is fired.
+* `Exception`: Pause on the line of code that is throwing a caught or uncaught exception.
+* `Function`: Pause whenever a specific function is called.
+
+Read [Get Started with Debugging JavaScript in Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/javascript/) to learn more.
+
+#### [String substitution and formatting](https://developers.google.com/web/tools/chrome-devtools/console/console-write#string-substitution-and-formatting)
+
+The first parameter passed to any of the logging methods may contain one or more format specifiers. A format specifier consists of a `%` symbol followed by a letter that indicates the formatting that applies to the value. 
+
+Example: Using `string` and `digit` formatters to insert values into the output
+
+```js
+console.log("%s has %d points", "Sam", 100);  
+// Sam has 100 points
+```
+
+* `%s`:	Formats the value as a string
+* `%i` or `%d`:	Formats the value as an integer
+* `%f`:	Formats the value as a floating point value
+* `%o`:	Formats the value as an expandable DOM element. As seen in the Elements panel
+* `%O`:	Formats the value as an expandable JavaScript object
+* `%c`:	Applies CSS style rules to the output string as specified by the second parameter
+
+#### `console.warn()`
+Prints a message like `console.log()`, but also displays a yellow warning icon next to the logged message.
+
+#### `console.error()`
+Prints a message similar to `console.log()`, styles the message like an error, and includes a stack trace from where the method was called.
+
+#### `console.info()`
+Prints a message like `console.log(),` but also shows an icon (blue circle with white "i") next to the output.
+
+#### `console.assert()`
+Syntax: `console.assert(expression, object)`
+
+Writes an `error` to the console when the evaluated expression is `false`.
+
+#### `console.clear()`
+Clears the console. However, if the `Preserve log` checkbox is enabled, `console.clear()` is disabled.
+
+#### `console.dir()`
+
+Prints a JavaScript representation of the specified object. If the object being logged is an `HTML element`, then the properties of its DOM representation are printed
+
+#### `console.group()` and `console.groupEnd()`
+Starts a new logging group with an optional title. 
+
+All console output that occurs after `console.group()` and before `console.groupEnd()` is visually grouped together.
+
+Example:
+
+```js
+function name(obj) {
+  console.group('name');
+  console.log('first: ', obj.first);
+  console.log('middle: ', obj.middle);
+  console.log('last: ', obj.last);
+  console.groupEnd();
+}
+
+name({"first":"Wile","middle":"E","last":"Coyote"});
+```
+
+You can also use `console.groupCollapsed()` to create a logging group that is initially collapsed instead of open.
+
+#### `console.count()`
+Writes the number of times that `count()` has been invoked at the same line and with the same label.
+
+Example:
+
+```js
+function login(name) {
+  console.count(name + ' logged in');
+}
+```
+
+See [Counting Statement Executions](https://developers.google.com/web/tools/chrome-devtools/console/track-executions#counting-statement-executions) for more examples.
+
+#### `console.time()` and `console.timeEnd()`
+Starts a new timer. Call `console.timeEnd()` to stop the timer and print the elapsed time to the Console.  You can also use labels to run multiple timers at the same time.
+
+Example for running `console.time()` once:
+
+```js
+console.time('total');
+
+let arr = new Array(10000);
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = new Object();
+  }
+console.timeEnd('total');
+// total: 3.696044921875ms
+```
+Example for running `console.time('total)` multiple times using label "total":
+
+```js
+console.time('total');
+console.time('init arr');
+
+let arr = new Array(10000);
+  console.timeEnd('init arr');
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = new Object();
+  }
+console.timeEnd('total');
+// init arr: 0.0546875ms
+// total: 2.5419921875ms
+```
+
+#### [`performance.now()`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
+
+Wes also mentioned using `performance.now()`
+
+The `performance.now()` method returns a `DOMHighResTimeStamp`, measured in milliseconds.  The returned value represents the time elapsed since the time origin.
+ 
+`DOMHighResTimeStamp` type is a `double` and is used to store a time value. The value could be a discrete point in time or the difference in time between two discrete points in time.
+
+

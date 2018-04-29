@@ -9,7 +9,6 @@
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -17,29 +16,72 @@
       p.style.fontSize = '50px';
     }
 
-    // Regular
+    // Setting debugging breakpoints
+        // Right click on element you want to inspect, select "Break On" and "Attribute modification" 
+        // This will add a debugger command (breakpoint) to pause JS execution, where you can then step through and inspect the function.
 
-    // Interpolated
 
-    // Styled
+    // Regular: Use console.log() for basic logging
+    console.log('hello')
 
-    // warning!
+    // Interpolated: String substitution and formatting
+    console.log('Try interpolation with variable data- print this: %s', 'Variable data!')
 
-    // Error :|
+    // Styled: Use %c to Applies CSS style to the output string 
+    console.log('%c Style this text', 'font-size: 20px; background: yellow;')
+
+    // warning! console.warn() to get stack traces where this was called
+    console.warn('Warning! Check your stacks!')
+
+    // Error :| Use console.error() to get stack traces where this was called
+    console.error('Display error in console')
 
     // Info
+    console.info('Check out my blue icon ℹ️');
 
-    // Testing
+    // Testing: Evaluate condition
+    console.assert(1===0, "This is wrong! 1 does not equal to 0")
+
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), "No, this p element does not contain class OUCH")
 
     // clearing
+    console.clear();
 
-    // Viewing DOM Elements
+    // Viewing DOM Elements: to view methods, children, properties etc
+    console.log(p);  // shows selected HTML element
+    console.dir(p);  // shows JS objective of selected HTML element
 
-    // Grouping together
+    // Grouping together: Use console.group() and console.groupEnd() to group related messages and avoid clutter
 
-    // counting
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
 
-    // timing
+    // or use console.groupCollapsed() to collapse data by default
+    dogs.forEach(dog => {
+        console.group(`${dog.name}`)  
+            console.log(`This is ${dog.name}`)
+            console.log(`${dog.name} is ${dog.age} years old`)
+        console.groupEnd(`${dog.name}`)
+    })
+
+    // counting: count number of occurences
+    console.count('Lisa')
+    console.count('Lisa')
+    console.count('Mike')
+    console.count('Lisa')
+    console.count('Lisa')
+    console.count('Mike')
+    console.count('Mike')
+    console.count('Mike')
+
+    // timing: see how long something takes
+    console.time('fetch data');
+
+    fetch('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json')
+        .then(responseBody => responseBody.json())
+        .then(data => {
+            console.timeEnd('fetch data');
+        })
 
   </script>
 </body>
