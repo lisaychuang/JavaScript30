@@ -24,6 +24,11 @@ The `*` may be replaced by any name following the production rule of xml names w
 * the name must not contain any semicolon (U+003A);
 * the name must not contain capital A to Z letters.
 
+Data attribute values can be accessible via:
+`HTMLElement.dataset.attributeName` OR
+`HTMLElement.dataset[attributeName]` OR
+`HTMLElement[data-key="attributeName"]`
+
 ### [Document vs Window objects](http://eligeske.com/jquery/what-is-the-difference-between-document-and-window-objects-2/)
 
 * `Window` is the first thing that gets loaded into the browser
@@ -235,6 +240,9 @@ An element can be both a `flex container` and a `flex item`!
 
 #### `flex`
 The `flex` CSS property specifies how a flex item will grow or shrink so as to fit the space available in its flex container. This is a shorthand property that sets `flex-grow`, `flex-shrink`, and `flex-basis`.
+
+#### [`flex-basis`](https://css-tricks.com/almanac/properties/f/flex-basis/)
+Specifies the initial size of the flex item, before any available space is distributed according to the flex factors. 
 
 ## Project 6: Ajax Type Ahead Search Form
 
@@ -620,3 +628,25 @@ Other related properties:
 * `MouseEvent.clientX`: The X coordinate of the mouse pointer in local (DOM content) coordinates.
 * `MouseEvent.clientY`: The Y coordinate of the mouse pointer in local (DOM content) coordinates.
 
+## Project 11: Custom HTML5 Video Player
+
+### [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement)
+
+The `HTMLMediaElement` interface adds to `HTMLElement` the properties and methods needed to support basic media-related capabilities that are common to audio and video. The `HTMLVideoElement <video>` and `HTMLAudioElement <audio>` elements both inherit this interface.
+
+**Properties covered in this project:**
+* `HTMLMediaElement.paused`: Returns a `Boolean` that indicates whether the media element is paused.
+* `HTMLMediaElement.currentTime`: Gives the current playback time in seconds. Setting this value sets the media to the new playback time.
+
+**Methods covered in this project:**
+* `HTMLMediaElement.play()`: Begins playback of media
+* `HTMLMediaElement.pause()`: Pauses media playback
+* `HTMLMediaElement.duration`: gives the length of the media in seconds, or zero if no media data is available.
+
+### [HTML Video Element: <video>](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+
+The HTML Video element `<video>` embeds a media player which supports video playback into the document. You can use `<video>` for audio content as well, but the `<audio>` element may provide a more appropriate user experience.
+
+### [Node.textConten](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
+
+`Node.textContent` property represents the text content of a node and its descendants, and can be used to `get` or `set` the text content.
