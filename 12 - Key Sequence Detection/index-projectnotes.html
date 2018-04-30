@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Key Detection</title>
-  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+    <meta charset="UTF-8">
+    <title>Key Detection</title>
+    <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 </head>
+
 <body>
-<script>
-</script>
+    <script>
+        
+        const pressed = [];
+        const secretCode = 'cooljs';
+
+        function keyLog(e) {
+            pressed.push(e.key);
+            pressed.splice(-secretCode.length -1, pressed.length - secretCode.length)
+            console.log(pressed);
+
+            // if user enters the secretCode, give them some 🦄 unicorn love!
+            if (pressed.join('').includes(secretCode)) {
+                console.clear();
+                console.warn('DING DING DING!!! You found the secret code!')
+                cornify_add(); 
+            }
+        }
+
+        // Add event listener to track keys pressed
+        window.addEventListener('keyup', keyLog)
+        
+    </script>
 </body>
+
 </html>

@@ -650,3 +650,18 @@ The HTML Video element `<video>` embeds a media player which supports video play
 ### [Node.textConten](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 
 `Node.textContent` property represents the text content of a node and its descendants, and can be used to `get` or `set` the text content.
+
+## Project 12: KONAMI CODE
+
+Konami code was originally a cheat code that appears in many Konami video games - a sequence of buttons on the game controller that enable a cheat or other effects.  The code is also present as an Easter egg on a number of websites.
+
+### [KeyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
+
+The KeyboardEvent.key read-only property returns the value of a key or keys pressed by the user. Its value is determined as follows:
+
+See a [full list of key values here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
+
+### [CornifyJS](http://www.cornify.com/)
+
+A JS library that randomly populars unicorn and rainbos on your webpage!
+
