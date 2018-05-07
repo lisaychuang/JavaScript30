@@ -665,3 +665,34 @@ See a [full list of key values here](https://developer.mozilla.org/en-US/docs/We
 
 A JS library that randomly populars unicorn and rainbos on your webpage!
 
+## Project 13: Image Slide In On Scroll
+
+### [Debounce vs Throttle](https://css-tricks.com/the-difference-between-throttling-and-debouncing/)
+
+Debouncing enforces that a function not be called again until a certain amount of time has passed. 
+**"Execute this function only if 100 milliseconds have passed without it being called."**
+
+Throttling enforces a maximum number of times a function can be called over time. 
+**"Execute this function at most once every 100 milliseconds."**
+
+### [window.scrollY](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollY)
+
+`scrollY` is a read-only property of `window`, which returns the number of pixels that the document is currently scrolled vertically.
+
+The `pageYOffset` property is an alias for the `scrollY` property:
+
+`window.pageYOffset == window.scrollY; // always true`
+
+For cross-browser compatibility, use `window.pageYOffset` instead of `window.scrollY`.
+
+### [window.innerHeight](https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight)
+
+Height (in pixels) of the browser `window` viewport including, if rendered, the horizontal scrollbar.
+
+### [HTMLElement.offsetTop](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop)
+
+`HTMLElement.offsetTop` is a read-only property, which returns the distance of the current element relative to the top of the closest relatively positioned parent element.
+
+
+
+
