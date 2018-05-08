@@ -8,14 +8,34 @@
 
   <script>
     // start with strings, numbers and booleans
+    let boolean = true;
+    let boo2 = boolean;
+    console.log(boolean, boo2);
+    boolean = false;
+    console.log(boolean, boo2);
+
+    let name = 'Lisa';
+    let name2 = name;
+    console.log(name, name2);
+    name = 'Wes';
+    console.log(name, name2);
+
+    let age = 150;
+    let age2 = age;
+    console.log(age, age2);
+    age = 800;
+    console.log(age, age2);
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
+    console.log('Did we make a copy?', players, team);
 
     // You might think we can just do something like this:
-
+    team[3] = 'Change player?';    // --> IF YOU UPDATE AN ARRAY, IT WILL UPDATE THE REFERENCE
+    console.log('Updated array from reference', players, team);
     // however what happens when we update that array?
 
     // now here is the problem!
@@ -27,10 +47,23 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
+      const team2_copy = players.slice(); // --> MAKE A COPY
+      team2_copy[3] = 'Im a copy!'; 
+      console.log('Make a copy with SLICE', players, team2_copy);
 
     // or create a new array and concat the old one in
-
+      const team3_newArray = [].concat(players);
+      team3_newArray[3] = 'Concat much?'; 
+      console.log('Make a copy with CONCAT', players, team3_newArray);
     // or use the new ES6 Spread
+      const team4_spread = [...players];
+      team4_spread[3] = 'Spread like butter'; 
+      console.log('Make a copy with SPREAD', players, team4_spread);
+
+      // or use Array.from
+      const team5_from = Array.from(players);
+      team5_from[3] = 'Where art thou from?'; 
+      console.log('Make a copy with Array.from', players, team5_from);
 
     // now when we update it, the original one isn't changed
 
@@ -43,12 +76,45 @@
     };
 
     // and think we make a copy:
+    // DON'T DO THIS! We are mutating the original object
+    const captain = person;
+    captain.age = 99;
+    console.log(person, captain)
 
     // how do we take a copy instead?
+    const captain2_copy = Object.assign({}, person, {number: 99, age: 35});
+    console.log(person, captain2_copy)
 
     // We will hopefully soon see the object ...spread
+    const captin3_spread = {...person};
 
-    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    // Things to note - this is a shallow copy - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    console.clear();
+    
+    const spain = {
+      name: 'spain',
+      continent: 'Europe',
+      madrid_landmarks: {
+        market: 'San Miguel',
+        museum: 'Prado',
+        palace: 'Royal Palace',
+        park: 'Retiro'
+      }
+    }
+    // Object.assign only copies copies property values (1 level)
+    console.log(spain);
+
+    // const spain2 = Object.assign({}, spain);
+    // spain2.name = 'Espana';
+    // console.log('First level properties',spain, spain2)
+    
+    // spain2.madrid_landmarks.market = 'Anton Martin';
+    // console.log('Second level properties',spain, spain2)
+    
+    // Deep clone with JSON methods
+    const spain3_deepClone = JSON.parse(JSON.stringify(spain));
+    spain3_deepClone.madrid_landmarks.market = 'Anton Martin';
+    console.log('Deep clone', spain, spain3_deepClone);
 
   </script>
 

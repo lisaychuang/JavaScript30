@@ -693,6 +693,112 @@ Height (in pixels) of the browser `window` viewport including, if rendered, the 
 
 `HTMLElement.offsetTop` is a read-only property, which returns the distance of the current element relative to the top of the closest relatively positioned parent element.
 
+## Project 14: Objects and Arrays - Reference vs Copy
 
+In this project, Wes explained **Passing By Value** and **Passing By Reference** concepts in Javascript with examples.  Researching further, I found this blog to be very helpful in explaining the two concepts:
 
+[Javascript Passing by Value vs. Reference Explained in Plain English](https://codeburst.io/javascript-passing-by-value-vs-reference-explained-in-plain-english-8d00fd06a47c) by Chris D'Ascoli
+
+### Pass by Value
+There are 5 `primitive` values in Javascript: `undefined, null, boolean, string, numbers`
+
+**Passing By Value** means that you have two variables in memory that are assigned to one another.   When we pass `primitives` by value, we are making a copy of the value of a variable stored in memory, say at address `0x001` and assigning it to a stored at `0x002`. 
+
+Example:
+```js
+  let a;
+  let b = 8;
+
+  let a = b;
+
+  console.log(b); // will return 8
+```
+
+Both `a` and `b` mirror each other as they are just copies of one another. 
+
+### Pass by Reference
+
+**Passing By Reference** relates to `objects` in Javascript (ALL objects including `array` and `functions`). Passing by reference involves having two references point to the same `object` in memory. 
+
+This means you can mutate an `object/array/function` by assigning it to another object or passing it as a parameter to a function.
+
+Example:
+```js
+let a = {language: "Javascript"}
+let b = a
+
+console.log(a) // => {language: "Javascript"}
+console.log(b) => {language: "Javascript"}
+
+a.language = "Ruby"
+
+console.log(a) // => {language: "Ruby"}
+console.log(b) // => {language: "Ruby"}
+```
+
+First, we created a variable `a` and set it equal to an object `{langauge: “Javascript”}`. 
+
+The equals `=`operator recognizes that the value is an object, creates a new spot in memory, and points `a` to it. 
+
+We then create a new variable `b` and set it equal to `a`. The equals `=` operator identifies we are dealing with objects and points `b` to the same location in memory that `a` is pointed to.
+
+No new location or object in memory was created, rather both variables `a` & `b` are pointing to the SAME location (address).
+
+So, when we mutate the value of variable `a`, changing “Javascript” to “Ruby”), theresults of `a` & `b` are the same since `b` points to the same location as `a`.  
+
+Therefore, in order to make a copy of an `object/array/function`, we have to use different methods:
+
+### Copying Array
+- [ES6 spread syntax `...`](https://github.com/lisaychuang/JavaScript30#es6-spread-syntax), method covered in Project 6
+- [`Array.slice()`](https://github.com/lisaychuang/JavaScript30#arrayprototypesplice-vs-arrayprototypeslice) method covered in Project 7
+- [`Array.prototype.concat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat): The `concat()` method is used to merge two or more arrays. This method does not change the existing arrays, but instead returns a new array.
+- [`Array.from()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from): creates a new Array instance from an array-like or iterable object.
+
+#### Copying Object - Shallow Copy
+
+[`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign): The `Object.assign()` method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.
+
+In another word, `Object.assign` performs a shallow copy and merges the original object's enumerable keys, but any nested properties remain shared between the original and the clone.
+
+Syntax: `Object.assign(target, ...sources)`
+
+However, there are some side effects with this method:
+
+1. all accessors or properties with a `getter` and a `setter`, will be copied as data, invoking the `getter` during the copy
+2. all `Symbol` keys, that are enumerable by default, will be copied too, making Symbols less private or protected than we think
+
+[How To Copy Objects in JavaScript](https://www.webreflection.co.uk/blog/2015/10/06/how-to-copy-objects-in-javascript) is a helpful blog by Andrea Giammarchi, he also provided his patched version of `Object.assign` function that preserves accessors. 
+
+[Understanding Object Cloning in Javascript](http://blog.soulserv.net/understanding-object-cloning-in-javascript-part-i/)is another useful blog for reference by Cédric Ronvel.
+
+#### Copying Object - Deep Copy
+When it is ok to share some data across variables, we can use shallow copy. 
+
+However, when we need to clone a deep and complex data structure (e.g. a `tree`), we will have to perform a `deep copy`.  A `deep copy` will recursively clone every objects it encounters. The clone and the original object will not share anything, so the clone will be a fully distinct entity.
+
+There's also an issue with `circular reference` - when an object  refers to itself in a property.
+
+Example:
+
+```js
+function Foo() {
+  this.abc = "Hello";
+  this.circular = this;
+}
+
+var foo = new Foo();
+alert(foo.circular.circular.circular.circular.circular.abc);
+// foo contains a reference to itself.
+```
+
+Currently, there is no native mechanism to perform a deep copy in JavaScript. So, it is best to use external libraries such as [cloner](https://github.com/WebReflection/cloner) or [tree-kit](https://www.npmjs.com/package/tree-kit), frameworks often have their own libraries such as React's [immutability-helper](https://github.com/kolodny/immutability-helper)
+
+Wes showed us that we can create a `deep clone` with: 
+
+`JSON.parse(JSON.stringify(obj))`
+
+- [`JSON.stringify()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify): converts a JavaScript value to a JSON string
+- [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse): parses a JSON string, then returns the JavaScript value or object described by the JSON string.
+
+This is also the suggested solution on [MDN guides](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), and a great [StackOverflow thread](https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript) discussed performance for various methods.
 
