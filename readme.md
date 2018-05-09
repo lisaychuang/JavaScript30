@@ -853,3 +853,11 @@ JS Syntax: `object.style.textShadow="2px 5px 5px red"`
 
 The text-shadow property adds shadow to text, default value is none.
 
+## Project 17: Sorting Band Names without articles
+
+### [Regular Expressions (Regex)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
+
+Regular expressions are patterns used to match character combinations in strings. 
+
+- [Handy JS Regex cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
+- [RegExr sandbox](https://regexr.com/)
