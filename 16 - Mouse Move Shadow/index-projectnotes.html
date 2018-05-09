@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mouse Shadow</title>
+</head>
+
+<body>
+
+    <div class="hero">
+        <h1 contenteditable>🍦 JAVASCRIPT 👅 </h1>
+    </div>
+
+    <style>
+        html {
+            color: black;
+            font-family: sans-serif;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+        }
+
+        h1 {
+            text-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+            font-size: 100px;
+        }
+    </style>
+
+    <script>
+        const hero = document.querySelector('.hero');
+        const text = document.querySelector('h1');
+        const shadowStretchLimit = 500; // 500px
+
+        function createShadow(e){
+            const {offsetWidth: width, offsetHeight: height} = hero;
+            let {offsetX : x, offsetY : y} = e;
+            
+            // IF there's nested elements, the offset value will reset to 0,0
+            // this = hero, the element the event listen is attached to
+            // e.target = h1
+            if (this !== e.target){
+                x = x + e.target.offsetLeft;
+                y = y + e.target.offsetTop;
+            }
+            
+            // setting the min/max limit of textshadow
+            const xStretch = Math.round((x/width * shadowStretchLimit) - (shadowStretchLimit/2));
+            const yStretch = Math.round((y/height * shadowStretchLimit) - (shadowStretchLimit/2));
+            
+            text.style.textShadow = `
+                ${xStretch}px ${yStretch * -1}px 20px #D4F5F5,
+                ${xStretch * -1}px ${yStretch}px 0 #FFC857,
+                ${yStretch}px ${xStretch*-1}px 10px #548687,
+                ${yStretch *-1}px ${xStretch}px 0 #C33C54
+            `       
+        }
+
+        hero.addEventListener('mousemove', createShadow);
+
+    </script>
+</body>
+
+</html>

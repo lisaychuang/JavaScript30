@@ -833,3 +833,23 @@ In this project, we used this method to stop the page from refreshing upon click
 
 Instead, the event listener is added to one parent (e.g. `ul`).  That event listener analyzes bubbled events to find a match on child elements.  
 
+## Project 16: CSS Text Shadow Moust Move Effect
+For block-level elements, `offsetTop`, `offsetLeft`, `offsetWidth`, and `offsetHeight` describe the border box of an element relative to the `offsetParent`.
+
+### [HTMLElement.offsetLeft](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft)
+The `HTMLElement.offsetLeft` read-only property returns the number of pixels that the upper left corner of the current element is offset to the left within the `HTMLElement.offsetParent` node.
+
+### [HTMLElement.offsetTop](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop)
+The `HTMLElement.offsetTop` read-only property returns the distance of the current element relative to the top of the `offsetParent` node.
+
+### [Math.round()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
+The `Math.round()` function returns the value of a number rounded to the nearest integer.  However, there may be rounding errors due to `floating-number` arithmetic. 
+
+Example: Rounding 1.005 should have an expected result of 1.01, but it returns 1.
+
+### [CSS `text-shadow` property](https://www.w3schools.com/cssref/css3_pr_text-shadow.asp)
+CSS Syntax: `text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;`
+JS Syntax: `object.style.textShadow="2px 5px 5px red"`
+
+The text-shadow property adds shadow to text, default value is none.
+
