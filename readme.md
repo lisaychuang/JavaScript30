@@ -802,3 +802,34 @@ Wes showed us that we can create a `deep clone` with:
 
 This is also the suggested solution on [MDN guides](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign), and a great [StackOverflow thread](https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript) discussed performance for various methods.
 
+## Project 15: LocalStorage & Event Delegation
+
+### [Storage](https://developer.mozilla.org/en-US/docs/Web/API/Storage)
+The `Storage` interface of the Web Storage API provides access to the `sessionStorage` or `localStorage` for a particular domain, allowing you to for example add, modify or delete stored data items.
+
+[`LocalStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/LocalStorage) allows you to access a `Storage` object for the current origin, the stored data is saved across browser sessions with no expiration set.
+
+#### [`Storage.getItem()`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem)
+Syntax: `storage.getItem(keyName);`
+
+When passed a key name, the `getItem()` method will return that key's value.
+
+#### [`Storage.setItem()`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem)
+Syntax: `storage.setItem(keyName, keyValue);`
+
+when passed a key name and value, the `setItem()` method will add that key to the storage, or update that key's value if it already exists.
+
+#### [`Storage.clear()`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/clear)
+When invoked,  the `clear()` method will empty all keys out of the storage.
+
+### [Event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
+The `Event` interface's `preventDefault()` method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls `stopPropagation()` or `stopImmediatePropagation()`, either of which terminates propagation at once.
+
+In this project, we used this method to stop the page from refreshing upon clicking the form `submit` button.
+
+### [Event delegation](https://davidwalsh.name/event-delegate)
+
+`Event delegation` allows us to avoid adding event listeners to specific nodes (e.g. `<li>` items once created).  
+
+Instead, the event listener is added to one parent (e.g. `ul`).  That event listener analyzes bubbled events to find a match on child elements.  
+

@@ -36,20 +36,115 @@
         <ul class="plates">
             <li>Loading Tapas...</li>
         </ul>
+
+        <!--Form to add items -->
         <form class="add-items">
             <input type="text" name="item" placeholder="Item Name" required>
             <input type="submit" value="+ Add Item">
+
+            <!-- STRETCH GOAL: add buttons for: Clear all, check all, uncheck all  -->
+            <input type="button" name='resetBtn' value="Reset Form">
+            <input type="button" name='checkAllBtn' value="Check All Items">
+            <input type="button" name='uncheckAllBtn' value="Uncheck All Items">
         </form>
     </div>
 
     <script>
         const addItems = document.querySelector('.add-items');
         const itemsList = document.querySelector('.plates');
-        const items = [];
+
+        // on page load, either get cached items list or display empty form
+        const items = JSON.parse(localStorage.getItem('items')) || [];
+
+        // addItem will create item obj, display on form, and add to localStorage
+        function addItem(e){
+            e.preventDefault(); // prevent page from reloading
+            const inputText = (this.querySelector('[name=item]')).value; // get user input
+
+            const item = {
+                text: inputText,
+                done: false
+            }
+
+            items.push(item); // add item to items array
+            populateList(items, itemsList); // display current items in form
+            
+            // add items to localStorage to cache data
+            localStorage.setItem('items', JSON.stringify(items));
+
+            this.reset(); // clear form upon submit
+        };
+        
+        // populateList will display list on page
+        function populateList(plates = [], platesList){
+            platesList.innerHTML = plates.map((plate, index) => {
+                return `
+                <li>
+                    <input type="checkbox" data-index=${index} id="item${index}" 
+                        ${plate.done ? 'checked' : ''} /> 
+                    <label for="item${index}">${plate.text}</label>
+                </li>
+                `;
+            }).join(''); // converts array into a string
+        }
+
+        // event delegation, attaching listener to high level element
+        // persist state of toggled items
+        function toggleDone(e){
+            if (!e.target.matches('input')) return; // skip this unless target = input
+            const element = e.target;
+            const index = element.dataset.index;
+
+            items[index].done = !items[index].done; // toggle done = true || false
+            
+            // store state of checkbox in local storage
+            localStorage.setItem('items', JSON.stringify(items));
+            // update visilibity on page
+            populateList(items, itemsList);
+        };
+
+        // add event listener to the submit button
+        addItems.addEventListener('submit', addItem);
+
+        // delegate event to itemsList instead of individual item checkbox
+        itemsList.addEventListener('click', toggleDone);
+
+        // display list of current items
+        populateList(items, itemsList);
+
+
+        // STRETCH GOAL:  Reset form 
+        const resetBtn = document.querySelector('.add-items [name=resetBtn]');
+
+        resetBtn.addEventListener('click', () => {
+            items.length = 0; 
+            localStorage.clear();
+            populateList(items, itemsList);
+        });
+
+        // STRETCH GOAL:  Check all items 
+        const checkAllBtn = document.querySelector('.add-items [name=checkAllBtn]');
+        
+        checkAllBtn.addEventListener('click', () => {
+            items.map(item => {
+                item.done = true;
+            });
+            localStorage.setItem('items', JSON.stringify(items));
+            populateList(items, itemsList);
+        });
+        
+        // STRETCH GOAL:  Uncheck all items 
+        const uncheckAllBtn = document.querySelector('.add-items [name=uncheckAllBtn]');
+        
+        uncheckAllBtn.addEventListener('click', () => {
+            items.map(item => {
+                item.done = false;
+            });
+            localStorage.setItem('items', JSON.stringify(items));
+            populateList(items, itemsList);
+        });
 
     </script>
-
-
 </body>
 
 </html>
