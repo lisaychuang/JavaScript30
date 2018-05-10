@@ -647,7 +647,7 @@ The `HTMLMediaElement` interface adds to `HTMLElement` the properties and method
 
 The HTML Video element `<video>` embeds a media player which supports video playback into the document. You can use `<video>` for audio content as well, but the `<audio>` element may provide a more appropriate user experience.
 
-### [Node.textConten](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
+### [Node.textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 
 `Node.textContent` property represents the text content of a node and its descendants, and can be used to `get` or `set` the text content.
 
@@ -861,3 +861,11 @@ Regular expressions are patterns used to match character combinations in strings
 
 - [Handy JS Regex cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
 - [RegExr sandbox](https://regexr.com/)
+
+## Project 17: Tally String Times with Reduce
+
+### [parseFloat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat)
+The `parseFloat()` function parses an argument and returns a floating point number.  We used this function to convert time from `string` to `number`.
+
+### [Math.floor()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
+The `Math.floor()` function returns the largest integer less than or equal to a given number.
