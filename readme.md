@@ -862,7 +862,7 @@ Regular expressions are patterns used to match character combinations in strings
 - [Handy JS Regex cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
 - [RegExr sandbox](https://regexr.com/)
 
-## Project 17: Tally String Times with Reduce
+## Project 18: Tally String Times with Reduce
 
 ### [parseFloat()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat)
 The `parseFloat()` function parses an argument and returns a floating point number.  We used this function to convert time from `string` to `number`.
