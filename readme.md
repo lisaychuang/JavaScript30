@@ -54,7 +54,7 @@ When only one argument is present: Toggle class value;
 (if class exists then remove it and return false, if not, add class and return true)
 
 When a second argument is present: If the second argument evaluates to true, add specified class value, and if it evaluates to false, remove it.
-* `contatins(str)` - checks if specified class value exists
+* `contains(str)` - checks if specified class value exists
 * `replace(oldClass, newClass)` - Replaces an existing class with a new class.
 
 ### [setTimeout()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
@@ -63,7 +63,7 @@ Sets a timer which executes a function or specified piece of code once after the
 
 * Wes noted that if you are using the [`transition` property](https://www.w3schools.com/cssref/css3_pr_transition.asp) in CSS, using `setTimeout` in your JS may result in transitions becoming out of sync. For this reason, Wes attaches a listener on the `transitionend` event
 
-* A timeout may also take longer to fire than anticipatd, caused by browser throttling and code execution sequence on single thread apps. [Read more about these potential delays here.](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+* A timeout may also take longer to fire than anticipated, caused by browser throttling and code execution sequence on single thread apps. [Read more about these potential delays here.](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
 
 ### [`transitionend`](https://developer.mozilla.org/en-US/docs/Web/Events/transitionend)
 The `transitionend` event is fired when a CSS transition has completed. In the case where a transition is removed before completion, such as if the `transition-property` is removed or `display` is set to "none", then the event will not be generated.
@@ -663,7 +663,7 @@ See a [full list of key values here](https://developer.mozilla.org/en-US/docs/We
 
 ### [CornifyJS](http://www.cornify.com/)
 
-A JS library that randomly populars unicorn and rainbos on your webpage!
+A JS library that randomly populars unicorn and rainbows on your webpage!
 
 ## Project 13: Image Slide In On Scroll
 
@@ -736,7 +736,7 @@ console.log(a) // => {language: "Ruby"}
 console.log(b) // => {language: "Ruby"}
 ```
 
-First, we created a variable `a` and set it equal to an object `{langauge: “Javascript”}`. 
+First, we created a variable `a` and set it equal to an object `{language: “Javascript”}`. 
 
 The equals `=`operator recognizes that the value is an object, creates a new spot in memory, and points `a` to it. 
 
@@ -744,7 +744,7 @@ We then create a new variable `b` and set it equal to `a`. The equals `=` operat
 
 No new location or object in memory was created, rather both variables `a` & `b` are pointing to the SAME location (address).
 
-So, when we mutate the value of variable `a`, changing “Javascript” to “Ruby”), theresults of `a` & `b` are the same since `b` points to the same location as `a`.  
+So, when we mutate the value of variable `a`, changing “Javascript” to “Ruby”), the results of `a` & `b` are the same since `b` points to the same location as `a`.  
 
 Therefore, in order to make a copy of an `object/array/function`, we have to use different methods:
 
@@ -833,7 +833,7 @@ In this project, we used this method to stop the page from refreshing upon click
 
 Instead, the event listener is added to one parent (e.g. `ul`).  That event listener analyzes bubbled events to find a match on child elements.  
 
-## Project 16: CSS Text Shadow Moust Move Effect
+## Project 16: CSS Text Shadow Mouse Move Effect
 For block-level elements, `offsetTop`, `offsetLeft`, `offsetWidth`, and `offsetHeight` describe the border box of an element relative to the `offsetParent`.
 
 ### [HTMLElement.offsetLeft](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft)
@@ -869,3 +869,73 @@ The `parseFloat()` function parses an argument and returns a floating point numb
 
 ### [Math.floor()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor)
 The `Math.floor()` function returns the largest integer less than or equal to a given number.
+
+## Project 19: Unreal Webcam Fun
+
+### [Navigator interface](https://developer.mozilla.org/en-US/docs/Web/API/Navigator)
+
+The `Navigator` interface represents the state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities.
+
+A `Navigator` object can be retrieved using the read-only `window.navigator` property.  The interface gives us access to several properties and methods.
+
+#### [Navigator.mediaDevices](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/mediaDevices)
+The `Navigator.mediaDevices` read-only property returns a `MediaDevices` object, which provides access to connected media input devices like cameras and microphones, as well as screen sharing.
+
+### [MediaDevices interface](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices)
+The `MediaDevices` interface provides access to connected media input devices like cameras and microphones, as well as screen sharing. In essence, it lets you obtain access to any hardware source of media data.
+
+#### [MediaDevices.getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
+The MediaDevices `getUserMedia()` method prompts the user for permission to use a media input which produces a `MediaStream` with tracks containing the requested types of media, e.g. video, audio etc.
+
+It returns a `Promise` that resolves to a `MediaStream` object. If the user denies permission, or matching media is not available, then the promise is rejected with `PermissionDeniedError` or `NotFoundError` respectively.
+
+### [URL interface](https://developer.mozilla.org/en-US/docs/Web/API/URL)
+The URL interface represents an object providing static methods used for creating object URLs.
+
+#### [Window.URL](https://developer.mozilla.org/en-US/docs/Web/API/Window/URL)
+The `Window.URL` property returns an object that provides static methods used for creating and managing object URLs. It can also be called as a **constructor** to construct `URL` objects.
+
+#### [URL.createObjectURL()](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL)
+The `URL.createObjectURL()` static method creates a `DOMString` containing a `URL` representing the object given in the parameter. The URL lifetime is tied to the document in the `window` on which it was created.
+
+### [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)
+The `setInterval()` method repeatedly calls a function or executes a code snippet, with a fixed time delay between each call. It returns an `interval` ID which uniquely identifies the interval, so you can remove it later by calling `clearInterval()`. This method is offered on the `Window` and `Worker` interfaces.
+
+### [CanvasRenderingContext2D](https://github.com/lisaychuang/JavaScript30#canvasrenderingcontext2d)
+We learned about HTML Canvas in Project 8. The `CanvasRenderingContext2D` interface is used for drawing objects onto the `canvas` element.  
+
+In this project, we used the following methods:
+
+#### [CanvasRenderingContext2D.drawImage()](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/drawImage)
+Syntax: `ctx.drawImage(image, dx, dy, dWidth, dHeight)`
+
+`CanvasRenderingContext2D.drawImage()` method takes in several arguments:.
+
+- `image`: An element to draw into the canvas context
+- `dx`: The X coordinate in the destination canvas at which to place the top-left corner of the source `image`
+- `dy`: The Y coordinate in the destination canvas at which to place the top-left corner of the source `image`
+- `dWidth`: The width to draw the image, this allows scaling of the drawn image. If not specified, the image is not scaled in width when drawn.
+- `dHeight`: The height to draw the image. this allows scaling of the drawn image. If not specified, the image is not scaled in height when drawn.
+
+#### [CanvasRenderingContext2D.getImageData()](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData)
+Syntax: `ctx.getImageData(sx, sy, sw, sh)`
+
+The `CanvasRenderingContext2D.getImageData()` method returns an `ImageData` object representing the underlying pixel data for the area of the canvas denoted by the rectangle which starts at `(sx, sy)` and has an `sw` width and `sh` height.`
+
+#### [CanvasRenderingContext2D.globalAlpha](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalAlpha)
+The `CanvasRenderingContext2D.globalAlpha` property specifies the alpha value that is applied to shapes and images before they are drawn onto the canvas. The value is in the range from 0.0 (fully transparent) to 1.0 (fully opaque).
+
+### [ImageData Interface](https://developer.mozilla.org/en-US/docs/Web/API/ImageData)
+
+The `ImageData` interface represents the underlying pixel data of an area of a `<canvas>` element, it has 3 properties:
+
+- `ImageData.data`: Is a [`Uint8ClampedArray`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) representing a one-dimensional array containing the data in the RGBA order, with integer values between 0 and 255.
+
+Example: `[255, 0, 0, 1] // red, green, blue, alpha`
+
+**Note** The `Uint8ClampedArray` typed array represents an array of 8-bit unsigned integers clamped to 0-255. It has limited properties and methods, such as `.length()`.  However, it does not have higher order functions like `map` or `reduce` for iterating over the array elements.
+
+- `ImageData.height`: the actual height, in pixels, of the `ImageData`.
+- `ImageData.width`: the actual width, in pixels, of the `ImageData`.
+
+
