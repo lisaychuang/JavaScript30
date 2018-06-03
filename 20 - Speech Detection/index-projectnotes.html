@@ -13,8 +13,43 @@
 
     <script>
         window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    
+        
+        // create a new instance of Speech Recognition
+        const recognition = new SpeechRecognition();
+        recognition.interimResults = true;  // display results as we speak
 
+        // create a new paragraph
+        let p = document.createElement('p');
+        const words = document.querySelector('.words');
+        words.append(p);
+
+        // add first event listener, to start listening to mic
+        recognition.addEventListener('result', e=> {
+            const transcript = Array.from(e.results)
+                               .map(result => result[0])
+                               .map(result => result.transcript)
+                               .join(''); //create a string of results
+
+            p.textContent = transcript;
+
+            // when a sentence end, the final result's isFinal property == true
+            // at this point, create a new paragraph for the next sentence
+            if (e.results[0].isFinal){
+            p = document.createElement('p');
+            words.appendChild(p);
+            }
+
+            // hook up weather API & other cool stuff!
+            if(transcript.includes('weather')){
+                console.log('Let me check the weather for you! 🌞❄️🌨 ');
+            };
+        })
+        
+        // Add a second event listener, to start listening again after a PAUSE
+        recognition.addEventListener('end', recognition.start);
+
+        // start recognition
+        recognition.start();
     </script>
 
 

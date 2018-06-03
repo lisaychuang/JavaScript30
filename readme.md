@@ -938,4 +938,34 @@ Example: `[255, 0, 0, 1] // red, green, blue, alpha`
 - `ImageData.height`: the actual height, in pixels, of the `ImageData`.
 - `ImageData.width`: the actual width, in pixels, of the `ImageData`.
 
+## Project 19: Unreal Webcam Fun
+
+### [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
+The `Web Speech API` enables you to incorporate voice data into web apps. The Web Speech API has two parts: `SpeechSynthesis` (Text-to-Speech), and `SpeechRecognition` (Asynchronous Speech Recognition.)
+
+- Speech recogition is accessed via the `SpeechRecognition` interface, which provides the ability to recognize voice context from an audio input (normally via the device's default speech recognition service) and respond appropriately. 
+
+- Speech synthesis is accessed via the `SpeechSynthesis` interface, a text-to-speech component that allows programs to read out their text content (normally via the device's default speech synthesiser.) 
+
+Different voice types are represented by `SpeechSynthesisVoice` objects, and different parts of text that you want to be spoken are represented by `SpeechSynthesisUtterance` objects. You can get these spoken by passing them to the `SpeechSynthesis.speak()` method.
+
+[MDN Guide to Using the Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API)
+
+### [SpeechRecognition interface](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)
+The `SpeechRecognition` interface of the Web Speech API is the controller interface for the recognition service; this also handles the `SpeechRecognitionEvent` sent from the recognition service.
+
+Generally you'll use the interface's constructor to create a new `SpeechRecognition` object:`SpeechRecognition.SpeechRecognition()` 
+
+This object has a number of event handlers available for detecting when speech is input through the device's microphone.
+
+SpeechRecognition methods used in this project:
+-[SpeechRecognition.start()](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
+
+The `start()` method of the `Web Speech API` starts the speech recognition service listening to incoming audio with intent to recognize grammars associated with the current SpeechRecognition.
+
+- [SpeechRecognition.interimResults](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/interimResults)
+The `interimResults` property controls whether interim results should be returned (`true`) or not (`false`.) Interim results are results that are not yet final (i.e. `SpeechRecognitionResult.isFinal = false`)
+
+The default value for `interimResults` is `false`.
+
 
