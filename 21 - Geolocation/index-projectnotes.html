@@ -58,6 +58,25 @@
     /*Compass: https://thenounproject.com/search/?q=compass&i=592352*/
   </style>
   <script>
+    // Browser are shipped with self-signed certificate
+
+    // select arrow & speed display
+    const arrow = document.querySelector('.arrow');
+    const speed = document.querySelector('.speed-value');
+
+    // watch ongoing position
+    console.log('Start watching position')
+
+    navigator.geolocation.watchPosition((data) => {
+      console.log(data);
+      speed.textContent = data.coords.speed;
+      arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+      
+    }, (err) => { // callback fn to handle error
+      console.err(err);
+      alert('Please turn on Location access!');
+    });
+
   </script>
 </body>
 </html>

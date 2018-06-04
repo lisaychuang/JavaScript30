@@ -938,7 +938,7 @@ Example: `[255, 0, 0, 1] // red, green, blue, alpha`
 - `ImageData.height`: the actual height, in pixels, of the `ImageData`.
 - `ImageData.width`: the actual width, in pixels, of the `ImageData`.
 
-## Project 19: Unreal Webcam Fun
+## Project 20: Native Speech Recognition
 
 ### [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
 The `Web Speech API` enables you to incorporate voice data into web apps. The Web Speech API has two parts: `SpeechSynthesis` (Text-to-Speech), and `SpeechRecognition` (Asynchronous Speech Recognition.)
@@ -958,7 +958,7 @@ Generally you'll use the interface's constructor to create a new `SpeechRecognit
 
 This object has a number of event handlers available for detecting when speech is input through the device's microphone.
 
-SpeechRecognition methods used in this project:
+`SpeechRecognition` methods used in this project:
 -[SpeechRecognition.start()](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/start)
 
 The `start()` method of the `Web Speech API` starts the speech recognition service listening to incoming audio with intent to recognize grammars associated with the current SpeechRecognition.
@@ -967,5 +967,47 @@ The `start()` method of the `Web Speech API` starts the speech recognition servi
 The `interimResults` property controls whether interim results should be returned (`true`) or not (`false`.) Interim results are results that are not yet final (i.e. `SpeechRecognitionResult.isFinal = false`)
 
 The default value for `interimResults` is `false`.
+
+## Project 21: Geolocation based Speedometer and Compass
+
+### [NavigatorGeolocation](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorGeolocation)
+The `Navigator` interface represents the state and the identity of the user agent. It allows scripts to query it and to register themselves to carry on some activities.
+
+In this project, our user agent is a user's mobile phone.
+
+`Navigator.geolocation` returns a `Geolocation` object allowing accessing the location of the device.
+
+### [Geolocation interface](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation)
+The `Geolocation` interface represents an object able to programmatically obtain the position of the device. It gives Web content access to the location of the device. This allows a website or app to offer customized results based on the user's location.
+
+`Geolocation` methods used in this project:
+- [Geolocation.watchPosition()](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/watchPosition)
+
+`watchPosition()` method is used to register a handler function that will be called automatically each time the position of the device changes. For example, `console.log(data)`. You can also specify an error handling callback function.
+
+If successful, this method will return a `Position` object with data on the device's position.
+
+#### [Position interface](https://developer.mozilla.org/en-US/docs/Web/API/Position)
+
+The `Position interface` represents the position of the user device at a given time.  The `position` is represented by a `Coordinates` object which contains various data.
+
+#### [Coordinates interface](https://developer.mozilla.org/en-US/docs/Web/API/Coordinates)
+
+The `Coordinates interface` represents the longitude, latitude, altitude of the device on Earth, current speed, as well as the accuracy with which these properties are calculated.
+
+Some of [Coordinates properties](https://developer.mozilla.org/en-US/docs/Web/API/Coordinates):
+- `Coordinates.latitude`
+- `Coordinates.longitude`
+- `Coordinates.altitude`
+- `Coordinates.accuracy`
+- `Coordinates.speed`
+- `Coordinates.heading`
+Returns a double representing the direction in which the device is traveling. This value, specified in degrees, indicates how far off from heading true north the device is and the direction is determined clockwise. 
+  - True north = 0 degrees
+  - East = 90 degrees
+  - South = 180 degrees
+  - West = 270 degrees
+
+If speed is 0, heading is `NaN`. If the device is unable to provide heading information, this value is `null`.
 
 
