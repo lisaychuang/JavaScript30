@@ -617,7 +617,7 @@ The `Event` interface represents any event which takes place in the DOM; some ar
 
 ### [MouseEvent](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)
 
-The MouseEvent interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include `click, dblclick, mouseup, mousedown.`
+The MouseEvent interface represents events that occur due to the user interacting with a pointing device (such as a mouse). Common events using this interface include `click, dblclick, mouseup, mousedown, mouseenter etc`
 
 `MouseEvent` properties covered in this project:
 
@@ -1010,4 +1010,13 @@ Returns a double representing the direction in which the device is traveling. Th
 
 If speed is 0, heading is `NaN`. If the device is unable to provide heading information, this value is `null`.
 
+## Project 22: Follow Along Highlight Links
 
+### [`Element.getBoundingClientRect()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+The `Element.getBoundingClientRect()` method returns the size of an element and its position relative to the viewport.
+
+The returned value is a `DOMRect` object which is the union of the rectangles returned by `getClientRects()` for the element, i.e., the CSS border-boxes associated with the element. 
+
+The result is the smallest rectangle which contains the entire element, with read-only `left, top, right, bottom, x, y, width`, and `height` properties describing the overall border-box in pixels. 
+
+Properties other than `width` and `height` are relative to the top-left of the viewport.
