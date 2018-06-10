@@ -1020,3 +1020,66 @@ The returned value is a `DOMRect` object which is the union of the rectangles re
 The result is the smallest rectangle which contains the entire element, with read-only `left, top, right, bottom, x, y, width`, and `height` properties describing the overall border-box in pixels. 
 
 Properties other than `width` and `height` are relative to the top-left of the viewport.
+
+## Project 23: Speech Synthesis
+
+In project 20, we learned to use the `SpeechRecognition` interface. In this project, we learned about the `SpeechSynthesisUtterance` interface to add speech service to our web app.
+
+### [SpeechSynthesisUtterance interface](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)
+The `SpeechSynthesisUtterance` interface of the Web Speech API represents a speech request. It contains the content the speech service should read and information about how to read it (e.g. language, pitch and volume.)
+
+#### [SpeechSynthesisUtterance() constructor](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/SpeechSynthesisUtterance)
+The constructor returns a new `SpeechSynthesisUtterance` object instance, which has various properties that can get and set the language, pitch, speed, voice, volume of the utterance (or speech) to be spoken.
+
+In this project, we defined these properties:
+
+- `SpeechSynthesisUtterance.text`: Gets and sets the text that will be synthesised when the utterance is spoken.
+- `SpeechSynthesisUtterance.pitch`: Gets and sets the pitch at which the utterance will be spoken at.
+- `SpeechSynthesisUtterance.rate`: Gets and sets the rate at which the utterance will be spoken at.
+- `SpeechSynthesisUtterance.voice`: Gets and sets the voice that will be used to speak the utterance.
+
+
+### [SpeechSynthesis interface](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis)
+
+The `SpeechSynthesis` interface of the Web Speech API is the controller interface for the speech service; this can be used to retrieve information about the synthesis voices available on the device, start and pause speech etc.
+
+In this project, we used these methods:
+
+- `SpeechSynthesis.getVoices()`: Returns a list of `SpeechSynthesisVoice` objects representing all the available voices on the current device. (e.g. English, French)
+
+This list is retrieved with an event handler, `SpeechSynthesis.onvoiceschanged` which fires when the list of `SpeechSynthesisVoice` objects that would be returned by the SpeechSynthesis.getVoices() method has changed.
+
+- `SpeechSynthesis.speak()`: Adds an `utterance` to the utterance queue; it will be spoken when any other utterances queued before it have been spoken.
+- `SpeechSynthesis.cancel()`: Removes all utterances from the utterance queue.
+
+
+### [Function.prototype.bind()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+The `bind()` method creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+
+Syntax: `function.bind(thisArg[, arg1[, arg2[, ...]]])`
+
+`thisArg`: The value to be passed as the `this` parameter to the target function when the bound function is called. 
+`arg1, arg2, ...`:
+These arguments (if any) follow the provided `this` value, and are then inserted at the start of the arguments passed to the target function, followed by the arguments passed to the bound function, whenever the bound function is called.
+
+MDN Guides provide two great examples showing how to create a `bound function` and a `partially applied function`.
+
+In this project, we used the `.bind()` method in the `stopButton` event handler to create a partially applied function:
+
+```js
+function toggle(startOver = true){
+    speechSynthesis.cancel();
+
+    if (startOver) {
+        speechSynthesis.speak(msg);
+    };
+}
+
+stopButton.addEventListener('click', toggle.bind(null, false));
+```
+
+When the `stopButton` is clicked, the event handler will execute the `toggle()` function with an initial value `false`
+
+i.e. `toggle(false)` which will call `speechSynthesis.cancel()` method to stop speech utterance.
+
+   
