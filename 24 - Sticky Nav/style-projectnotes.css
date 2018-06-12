@@ -22,7 +22,12 @@ html {
     transform: scale(0.98);
     transition: transform 0.5s;
   }
-  
+
+  /* when fixed nav, change the scale of site-wrap div to 100% */
+  .fixed-nav .site-wrap{
+      transform: scale(1);
+  }
+
   header {
     text-align: center;
     height:50vh;
@@ -47,6 +52,14 @@ html {
     position: relative;
     z-index: 1;
   }
+
+  /* Style to fix nav bar */
+  /* when an element position is FIXED, 
+    it is no longer part of paget */
+  .fixed-nav nav {
+      position: fixed;
+      box-shadow: 0 5px rgba(0,0,0,0.1);
+  }
   
   nav ul {
     margin: 0;
@@ -70,6 +83,13 @@ html {
     transition: all .5s;
     font-weight: 600;
     font-size: 30px;
+  }
+
+  /* when we scroll past nav, set logo max-width to transition in
+  note: CSS transition works for max-width, not width
+  also requires a set max-width, can't use auto */
+  .fixed-nav li.logo {
+      max-width: 500px;
   }
   
   li.logo a {

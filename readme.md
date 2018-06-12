@@ -1082,4 +1082,37 @@ When the `stopButton` is clicked, the event handler will execute the `toggle()` 
 
 i.e. `toggle(false)` which will call `speechSynthesis.cancel()` method to stop speech utterance.
 
-   
+
+## Project 24: Sticky Nav Bar
+
+They key takeaway for this project was the need to account for nav bar height (`offsetHeight`) when we fix it to the top of page, and CSS tweaks.
+
+### Fix Nav Bar
+When user scroll past nav bar, we:
+
+- added a `class` to `<body>` element
+- account for nav bar's height by adding padding to `<body>`:
+```js 
+document.body.style.paddingTop = nav.offsetHeight; 
+```
+
+- updated CSS for `.fixed-nav nav`: change `position` from `relative` to `fixed`
+
+### Logo Transition Animation
+Note that CSS transitions do not work on auto dimensions!  Here's a great article by Brandon Smith, [Using CSS Transitions on Auto Dimensions](https://css-tricks.com/using-css-transitions-auto-dimensions/)
+- updated CSS for `.fixed-nav li.logo`: change `max-width: 500px`
+
+### Scale Up Content
+Here, Wes scaled up the content (wrapped in `<div> `with class name `site-wrap`):
+- updated CSS for `.fixed-nav .site-wrap`: change `transform` scale from 0.98 to 1
+
+The [`scale()` CSS function](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale) defines a transformation that resizes an element on the 2D plane. The amount of scaling is defined by a vector, so it can resize the horizontal and vertical dimensions at different scales.
+
+Syntax: 
+```js
+scale(sx)  
+// sx: A number representing the abscissa of the scaling vector.
+
+scale(sx, sy)
+// sy: A number representing the ordinate of the scaling vector. If not defined, its default value is sx, resulting in a uniform scaling that preserves the element's aspect ratio.
+```
