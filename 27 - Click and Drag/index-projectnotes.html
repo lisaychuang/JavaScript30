@@ -35,6 +35,47 @@
   </div>
 
 <script>
+    const slider = document.querySelector('.items');
+    let isDown = false;
+    let startX;  // stores the X coordinate of mousedown event when clicked
+    let scrollLeft;
+
+    function removeActive(){
+        isDown = false;
+        slider.classList.remove('active');
+    };
+
+    // remove active class from slider when mouseup and mouseleave
+    slider.addEventListener('mouseleave', removeActive);
+    slider.addEventListener('mouseup', removeActive);
+
+    // when mousedown, set starting X and scrollLeft position.
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        // set startX coordinate, accounting for any left margin
+        startX = e.pageX - slider.offsetLeft;
+
+        // get the number of pixels that slider is scrolled to the left.
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        // stop the function from running if mouse is NOT clicked when moving
+        if(!isDown) return; 
+        e.preventDefault();
+
+        // set start coordinate, accounting for any left margin
+        const endX = e.pageX - slider.offsetLeft;
+
+        // store the difference between startX and where mouse scrolls to
+        // multiply by some factor (eg 3) to increase scroll speed
+        const xChange = (endX - startX)* 3;
+
+        // set slider scroll value
+        slider.scrollLeft = scrollLeft - xChange;
+    });
+
 </script>
 
   </body>
