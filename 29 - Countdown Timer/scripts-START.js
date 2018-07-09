@@ -65,3 +65,8 @@ document.customForm.addEventListener('submit', function(e){
 
     this.reset();
 })
+
+// FEATURE REQUEST 
+// when 3 mins left, background = red
+
+// when timer is up, set up an alert + sound
