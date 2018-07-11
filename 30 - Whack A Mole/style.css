@@ -14,7 +14,7 @@ body {
   font-family: 'Amatic SC', cursive;
 }
 
-h1 {
+h1, .buttons{
   text-align: center;
   font-size: 10rem;
   line-height:1;
