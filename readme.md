@@ -1173,3 +1173,21 @@ Example:
   background.style.setProperty('width', `${coords.width}px`);
   background.style.setProperty('transform', `translate(${coords.left}px,${coords.top}px)`);
 ```
+
+## Project 27: Click and Drag
+
+### [UIEvent.pageX](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/pageX)
+
+In this project, Wes used `.pageX()` to get the horizontal coordinate of the `mousemove` event relative to the whole document. 
+
+**NOTE** MDN notes that this feature is only valid on [MouseEvent interface](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)!  
+
+### [Element.scrollLeft](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollLeft)
+
+`Element.scrollLeft` property gets or sets the number of pixels that an element's content is scrolled to the left.
+
+The CSS [direction](https://developer.mozilla.org/en-US/docs/Web/CSS/direction) property sets the direction of text, table columns, and horizontal overflow. 
+* `rtl`: for languages written from right to left (e.g. Chinese, Hebrew, Arabic)
+* `ltr`: for languages written from left to right (e.g. English)
+
+Note that if the element's direction of the element is `rtl` (right-to-left) then `scrollLeft = 0` when the scrollbar is at its rightmost position (at start of the scrolled content) and then increasingly negative as you scroll towards the end of the content.
