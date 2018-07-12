@@ -1116,3 +1116,41 @@ scale(sx)
 scale(sx, sy)
 // sy: A number representing the ordinate of the scaling vector. If not defined, its default value is sx, resulting in a uniform scaling that preserves the element's aspect ratio.
 ```
+
+## Project 25: Event Capture, Propagation, Bubbling & Once
+
+They key takeaway for this project is [DOM Event Architecture](https://www.w3.org/TR/DOM-Level-3-Events/#event-flow). 
+
+Here's a great diagram, showing an event dispatched in a DOM tree using the DOM event flow:
+![DOM event flow](https://www.w3.org/TR/DOM-Level-3-Events/images/eventflow.svg)
+
+Event objects are dispatched to an event target. But before dispatch can begin, the event object’s **propagation path** must first be determined. 
+
+### Propagation path
+Propagation is also known as an **event target chain** - the ordered set of current event targets though which an event object will pass sequentially on the way to and back from the event target.As the event propagates, each current event target in the propagation path is in turn set as the currentTarget.
+
+Once the propagation path has been determined, the event object passes through one or more event phases:
+
+### Event phases
+* `Capture Phase`: The event object propagates through the target’s ancestors from the `Window` to the target’s parent
+* `Target phase`:  The event object arrives at the event object’s event target. This phase is also known as the at-target phase. If the event type indicates that the event doesn’t bubble, then the event object will halt after completion of this phase.
+* `Bubble phase`: The event object propagates through the target’s ancestors in reverse order, starting with the target’s parent and ending with the `Window`. 
+
+ A phase will be skipped if it is not supported, all phases will be skipped if `stopPropagation()` has been called prior to the dispatch.
+
+ ### [`EventTarget.addEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) 
+
+Syntax: 
+```js
+  target.addEventListener(type, listener[, options]);
+  target.addEventListener(type, listener[, useCapture]);
+```
+
+The `EventTarget` method `addEventListener()` sets up a function that will be called whenever the specified event is delivered to the target. 
+
+* `type`: A case-sensitive string representing the event type to listen for (e.g. click, mousedown)
+* `listener`: a callback function
+* `options` (optional attributes): 
+  * `capture`: a `Boolean`, if `false` the `capture phase` will be skipped
+  * `once`: a `Boolean` indicating that the `listener`  should be invoked at most once after being added. If true, the listener would be automatically removed when invoked.
+  * `passive` a `Boolean`, if `true` the `listener` will never call `preventDefault()`.
