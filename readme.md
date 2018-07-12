@@ -1154,3 +1154,22 @@ The `EventTarget` method `addEventListener()` sets up a function that will be ca
   * `capture`: a `Boolean`, if `false` the `capture phase` will be skipped
   * `once`: a `Boolean` indicating that the `listener`  should be invoked at most once after being added. If true, the listener would be automatically removed when invoked.
   * `passive` a `Boolean`, if `true` the `listener` will never call `preventDefault()`.
+
+## Project 26: Stripe Follow Along Nav
+
+###[`setProperty()`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
+
+Syntax: 
+```js
+  style.setProperty(propertyName, value, priority); 
+```
+`priority`: is a DOMString allowing the `important` CSS priority to be set. If not specified, treated as the empty string.
+
+`setProperty()` method sets a new value for a property on a CSS style declaration object.
+
+Example:
+```js
+  background.style.setProperty('height', `${coords.height}px`);
+  background.style.setProperty('width', `${coords.width}px`);
+  background.style.setProperty('transform', `translate(${coords.left}px,${coords.top}px)`);
+```
