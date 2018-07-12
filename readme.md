@@ -637,6 +637,8 @@ The `HTMLMediaElement` interface adds to `HTMLElement` the properties and method
 **Properties covered in this project:**
 * `HTMLMediaElement.paused`: Returns a `Boolean` that indicates whether the media element is paused.
 * `HTMLMediaElement.currentTime`: Gives the current playback time in seconds. Setting this value sets the media to the new playback time.
+**Covered in project 28**
+* `HTMLMediaElement.playbackRate`:  sets the rate at which the media is being played back. This is used to implement user controls for fast forward, slow motion, and so forth. The normal playback rate is multiplied by this value to obtain the current rate, so a value of 1.0 indicates normal speed.
 
 **Methods covered in this project:**
 * `HTMLMediaElement.play()`: Begins playback of media
@@ -1178,7 +1180,9 @@ Example:
 
 ### [UIEvent.pageX](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/pageX)
 
-In this project, Wes used `.pageX()` to get the horizontal coordinate of the `mousemove` event relative to the whole document. 
+In this project, Wes used `.pageX` to get the horizontal X coordinate of the `mousemove` event relative to the whole document. 
+
+`UIEvent.pageY` gets the vertical Y coordinate of the `mousemove` event relative to the whole document. 
 
 **NOTE** MDN notes that this feature is only valid on [MouseEvent interface](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)!  
 
@@ -1191,3 +1195,10 @@ The CSS [direction](https://developer.mozilla.org/en-US/docs/Web/CSS/direction) 
 * `ltr`: for languages written from left to right (e.g. English)
 
 Note that if the element's direction of the element is `rtl` (right-to-left) then `scrollLeft = 0` when the scrollbar is at its rightmost position (at start of the scrolled content) and then increasingly negative as you scroll towards the end of the content.
+
+## Project 28: Video Speed Controller
+Added `UIEvent.pageY` and `HTMLMediaElement.playbackRate` to corresponding sections above.
+
+### [`Number.prototype.toFixed()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
+
+The `toFixed()` method formats a number using fixed-point notation, where a number that has a fixed number of digits after (and sometimes also before) the decimal point.
