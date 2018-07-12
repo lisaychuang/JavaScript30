@@ -65,10 +65,10 @@ Sets a timer which executes a function or specified piece of code once after the
 
 * A timeout may also take longer to fire than anticipated, caused by browser throttling and code execution sequence on single thread apps. [Read more about these potential delays here.](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
 
-### [`transitionend`](https://developer.mozilla.org/en-US/docs/Web/Events/transitionend)
+### [transitionend](https://developer.mozilla.org/en-US/docs/Web/Events/transitionend)
 The `transitionend` event is fired when a CSS transition has completed. In the case where a transition is removed before completion, such as if the `transition-property` is removed or `display` is set to "none", then the event will not be generated.
 
-### [`animationend`](https://developer.mozilla.org/en-US/docs/Web/Events/animationend)
+### [animationend](https://developer.mozilla.org/en-US/docs/Web/Events/animationend)
  
 The animationend event is fired when a CSS animation has completed. 
 In the case where an animation is removed before completion, such as if the `animation-duration` is removed or `display` is set to "none", then the event will not be generated.
@@ -105,7 +105,7 @@ To create a transition effect, you must specify two things:
 * `transition-property` - CSS property you want to add an effect to
 * `transition-duration` - Specifies how many seconds or milliseconds the transition effect takes to complete
 
-### [`transition-timing-function`](https://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp)
+### [transition-timing-function](https://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp)
 
 The `transition-timing-function` property specifies the speed curve of the transition effect.
 
@@ -241,7 +241,7 @@ An element can be both a `flex container` and a `flex item`!
 #### `flex`
 The `flex` CSS property specifies how a flex item will grow or shrink so as to fit the space available in its flex container. This is a shorthand property that sets `flex-grow`, `flex-shrink`, and `flex-basis`.
 
-#### [`flex-basis`](https://css-tricks.com/almanac/properties/f/flex-basis/)
+#### [flex-basis](https://css-tricks.com/almanac/properties/f/flex-basis/)
 Specifies the initial size of the flex item, before any available space is distributed according to the flex factors. 
 
 ## Project 6: Ajax Type Ahead Search Form
@@ -601,7 +601,7 @@ console.timeEnd('total');
 // total: 2.5419921875ms
 ```
 
-#### [`performance.now()`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
+#### [performance.now()](https://developer.mozilla.org/en-US/docs/Web/API/Performance/now)
 
 Wes also mentioned using `performance.now()`
 
@@ -811,17 +811,17 @@ The `Storage` interface of the Web Storage API provides access to the `sessionSt
 
 [`LocalStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/LocalStorage) allows you to access a `Storage` object for the current origin, the stored data is saved across browser sessions with no expiration set.
 
-#### [`Storage.getItem()`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem)
+#### [Storage.getItem()](https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem)
 Syntax: `storage.getItem(keyName);`
 
 When passed a key name, the `getItem()` method will return that key's value.
 
-#### [`Storage.setItem()`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem)
+#### [Storage.setItem()](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem)
 Syntax: `storage.setItem(keyName, keyValue);`
 
 when passed a key name and value, the `setItem()` method will add that key to the storage, or update that key's value if it already exists.
 
-#### [`Storage.clear()`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/clear)
+#### [Storage.clear()](https://developer.mozilla.org/en-US/docs/Web/API/Storage/clear)
 When invoked,  the `clear()` method will empty all keys out of the storage.
 
 ### [Event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
@@ -1014,7 +1014,7 @@ If speed is 0, heading is `NaN`. If the device is unable to provide heading info
 
 ## Project 22: Follow Along Highlight Links
 
-### [`Element.getBoundingClientRect()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
+### [Element.getBoundingClientRect()](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect)
 The `Element.getBoundingClientRect()` method returns the size of an element and its position relative to the viewport.
 
 The returned value is a `DOMRect` object which is the union of the rectangles returned by `getClientRects()` for the element, i.e., the CSS border-boxes associated with the element. 
@@ -1140,7 +1140,7 @@ Once the propagation path has been determined, the event object passes through o
 
  A phase will be skipped if it is not supported, all phases will be skipped if `stopPropagation()` has been called prior to the dispatch.
 
- ### [`EventTarget.addEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) 
+ ### [EventTarget.addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener) 
 
 Syntax: 
 ```js
@@ -1159,7 +1159,7 @@ The `EventTarget` method `addEventListener()` sets up a function that will be ca
 
 ## Project 26: Stripe Follow Along Nav
 
-###[`setProperty()`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
+### [setProperty()](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
 
 Syntax: 
 ```js
@@ -1199,6 +1199,27 @@ Note that if the element's direction of the element is `rtl` (right-to-left) the
 ## Project 28: Video Speed Controller
 Added `UIEvent.pageY` and `HTMLMediaElement.playbackRate` to corresponding sections above.
 
-### [`Number.prototype.toFixed()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
+### [Number.prototype.toFixed()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed)
 
 The `toFixed()` method formats a number using fixed-point notation, where a number that has a fixed number of digits after (and sometimes also before) the decimal point.
+
+## Project 29: Countdown Timer
+
+### [JavaScript Date instance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+Syntax:
+```js
+  new Date();
+  new Date(value);
+  new Date(dateString);
+  new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
+```
+
+`Date` objects are based on a time value that is the number of milliseconds since 1 January 1970 UTC.
+
+[`Date.now()` method]((https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now)): Returns the numeric value corresponding to the current time - the number of milliseconds elapsed since **January 1, 1970 00:00:00 UTC**, with leap seconds ignored.
+
+### [Document.title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title)
+
+The `document.title` property gets or sets the current title of the document.
+
